@@ -10,25 +10,21 @@
       (list a (concat (repeat diff padding) b))
       (list (concat (repeat (Math/abs diff) padding) a) b))))
 
-(defn- multiply-pairs [pairs]
+(defn- operate-on-pairs [op pairs]
   (loop [carry 0 result '() remaining pairs]
     (if (seq remaining)
       (let [[a b] (first remaining)
-            r (+ (* a b) carry)]
+            r (+ (op a b) carry)]
         (recur (quot r 10) (cons (rem r 10) result) (rest remaining)))
       (if (> carry 0)
         (cons carry result)
         result))))
 
+(defn- multiply-pairs [pairs]
+  (operate-on-pairs * pairs))
+
 (defn- sum-pairs [pairs]
-  (loop [carry 0 result '() remaining pairs]
-    (if (seq remaining)
-      (let [[a b] (first remaining)
-            r (+ (+ a b) carry)]
-        (recur (quot r 10) (cons (rem r 10) result) (rest remaining)))
-      (if (> carry 0)
-        (cons carry result)
-        result))))
+  (operate-on-pairs + pairs))
 
 (defn- create-direct-pairs [as bs]
   (let [[pas pbs] (left-pad-to-longest 0 as bs)]

@@ -1,4 +1,4 @@
-(ns multip-alg)
+(ns dearithmetic.classic)
 
 (defn to-int-list [str]
   (map #(Character/getNumericValue %) str))

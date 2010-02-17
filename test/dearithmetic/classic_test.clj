@@ -1,6 +1,6 @@
-(ns multip-alg-test
+(ns dearithmetic.classic-test
   (:use clojure.test
-        multip-alg))
+        dearithmetic.classic))
 
 (deftest test-left-pad-to-longest
   (is (= '((0 0) (2 3)) (left-pad-to-longest 0 '() '(2 3))))

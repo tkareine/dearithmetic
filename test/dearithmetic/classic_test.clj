@@ -57,10 +57,10 @@
   (is (= '(1) (clean-num-seq '(0 1)))))
 
 (deftest test-multiply-strs
-  (is (= "0"   (multiply-strs "1"    "0")))
-  (is (= "1"   (multiply-strs "1"    "1")))
-  (is (= "123" (multiply-strs "1"    "123")))
-  (is (= "369" (multiply-strs "123"  "3")))
-  (is (= "369" (multiply-strs "3"    "123")))
+  (is (= "0"   (multiply-strs "1"   "0")))
+  (is (= "1"   (multiply-strs "1"   "1")))
+  (is (= "123" (multiply-strs "1"   "123")))
+  (is (= "369" (multiply-strs "123" "3")))
+  (is (= "369" (multiply-strs "3"   "123")))
   (is (= "62923130473259441604535" (multiply-strs "50982345203045" "1234214123")))
   (is (= "62923130473259441604535" (multiply-strs "1234214123" "50982345203045"))))

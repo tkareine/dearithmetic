@@ -7,24 +7,24 @@
   (is (= '((0 1) (2 3)) (left-pad-to-longest 0 '(1) '(2 3))))
   (is (= '((0 0 1) (2 3 4)) (left-pad-to-longest 0 '(1) '(2 3 4)))))
 
-(deftest test-sum-pairs
-  (is (= '()        (sum-pairs '())))
-  (is (= '(5)       (sum-pairs '((3 2)))))
-  (is (= '(1 1)     (sum-pairs '((3 8)))))
-  (is (= '(1 3 1)   (sum-pairs '((3 8) (3 9)))))
-  (is (= '(1 3 1 6) (sum-pairs '((8 8) (6 4) (3 9))))))
+(deftest test-add-pairs
+  (is (= '()        (add-pairs '())))
+  (is (= '(5)       (add-pairs '((3 2)))))
+  (is (= '(1 1)     (add-pairs '((3 8)))))
+  (is (= '(1 3 1)   (add-pairs '((3 8) (3 9)))))
+  (is (= '(1 3 1 6) (add-pairs '((8 8) (6 4) (3 9))))))
 
 (deftest test-create-direct-pairs
   (is (= '((1 3) (0 2)) (create-direct-pairs '(1) '(2 3)))))
 
-(deftest test-sum-num-seqs
-  (is (= '(0)     (sum-num-seqs '(0))))
-  (is (= '(3)     (sum-num-seqs '(3))))
-  (is (= '(3)     (sum-num-seqs '(3) '(0))))
-  (is (= '(5)     (sum-num-seqs '(3) '(2))))
-  (is (= '(1 1)   (sum-num-seqs '(3) '(8))))
-  (is (= '(7 7)   (sum-num-seqs '(3 8) '(3 9))))
-  (is (= '(5 4 6) (sum-num-seqs '(8 8) '(6 4) '(3 9 4)))))
+(deftest test-add-num-seqs
+  (is (= '(0)     (add-num-seqs '(0))))
+  (is (= '(3)     (add-num-seqs '(3))))
+  (is (= '(3)     (add-num-seqs '(3) '(0))))
+  (is (= '(5)     (add-num-seqs '(3) '(2))))
+  (is (= '(1 1)   (add-num-seqs '(3) '(8))))
+  (is (= '(7 7)   (add-num-seqs '(3 8) '(3 9))))
+  (is (= '(5 4 6) (add-num-seqs '(8 8) '(6 4) '(3 9 4)))))
 
 (deftest test-multiply-pairs
   (is (= '()        (multiply-pairs '())))
@@ -56,11 +56,11 @@
   (is (= '(1) (clean-num-seq '(1))))
   (is (= '(1) (clean-num-seq '(0 1)))))
 
-(deftest test-longhand
-  (is (= "0"   (longhand "1"    "0")))
-  (is (= "1"   (longhand "1"    "1")))
-  (is (= "123" (longhand "1"    "123")))
-  (is (= "369" (longhand "123"  "3")))
-  (is (= "369" (longhand "3"    "123")))
-  (is (= "62923130473259441604535" (longhand "50982345203045" "1234214123")))
-  (is (= "62923130473259441604535" (longhand "1234214123" "50982345203045"))))
+(deftest test-multiply-strs
+  (is (= "0"   (multiply-strs "1"    "0")))
+  (is (= "1"   (multiply-strs "1"    "1")))
+  (is (= "123" (multiply-strs "1"    "123")))
+  (is (= "369" (multiply-strs "123"  "3")))
+  (is (= "369" (multiply-strs "3"    "123")))
+  (is (= "62923130473259441604535" (multiply-strs "50982345203045" "1234214123")))
+  (is (= "62923130473259441604535" (multiply-strs "1234214123" "50982345203045"))))

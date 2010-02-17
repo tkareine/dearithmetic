@@ -19,21 +19,21 @@
         (cons carry result)
         result))))
 
+(defn add-pairs [pairs]
+  (operate-on-pairs + pairs))
+
 (defn multiply-pairs [pairs]
   (operate-on-pairs * pairs))
-
-(defn sum-pairs [pairs]
-  (operate-on-pairs + pairs))
 
 (defn create-direct-pairs [as bs]
   (let [[pas pbs] (left-pad-to-longest 0 as bs)]
     (partition 2 (interleave (reverse pas) (reverse pbs)))))
 
-(defn sum-num-seqs [num-seq & num-seqs]
+(defn add-num-seqs [num-seq & num-seqs]
   (loop [sum num-seq remaining num-seqs]
     (if (seq remaining)
       (let [pairs (create-direct-pairs sum (first remaining))]
-        (recur (sum-pairs pairs) (rest remaining)))
+        (recur (add-pairs pairs) (rest remaining)))
       sum)))
 
 (defn create-cross-pairs [as bs]
@@ -60,11 +60,11 @@
       (let [new-product (reduce
                             (fn [sum [pairs order]]
                               (let [inter-product (concat (multiply-pairs pairs) (repeat order 0))]
-                                (sum-num-seqs sum inter-product)))
+                                (add-num-seqs sum inter-product)))
                             '(0)
                             (index-pairs (create-cross-pairs product (first remaining))))]
         (recur new-product (rest remaining)))
       (clean-num-seq product))))
 
-(defn longhand [as bs]
-  (apply str (multiply-num-seqs (to-int-list as) (to-int-list bs))))
+(defn multiply-strs [as bs]
+  (apply str (multiply-num-seqs (digit-str-to-int-list as) (digit-str-to-int-list bs))))

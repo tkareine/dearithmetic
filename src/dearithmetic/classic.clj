@@ -1,6 +1,6 @@
 (ns dearithmetic.classic)
 
-(defn to-int-list [str]
+(defn- digit-str-to-int-list [str]
   (map #(Character/getNumericValue %) str))
 
 (defn left-pad-to-longest [padding a b]
@@ -9,7 +9,7 @@
       (list a (concat (repeat diff padding) b))
       (list (concat (repeat (Math/abs diff) padding) a) b))))
 
-(defn operate-on-pairs [op pairs]
+(defn- operate-on-pairs [op pairs]
   (loop [carry 0 result '() remaining pairs]
     (if (seq remaining)
       (let [[a b] (first remaining)

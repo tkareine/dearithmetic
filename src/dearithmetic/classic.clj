@@ -66,5 +66,8 @@
         (recur new-product (rest remaining)))
       (clean-num-seq product))))
 
+(defn add-strs [as bs]
+  (apply str (add-num-seqs (digit-str-to-int-list as) (digit-str-to-int-list bs))))
+
 (defn multiply-strs [as bs]
   (apply str (multiply-num-seqs (digit-str-to-int-list as) (digit-str-to-int-list bs))))

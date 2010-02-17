@@ -56,6 +56,16 @@
   (is (= '(1) (clean-num-seq '(1))))
   (is (= '(1) (clean-num-seq '(0 1)))))
 
+(deftest test-add-strs
+  (is (= "0"   (add-strs "0"   "0")))
+  (is (= "1"   (add-strs "1"   "0")))
+  (is (= "2"   (add-strs "1"   "1")))
+  (is (= "124" (add-strs "1"   "123")))
+  (is (= "369" (add-strs "242" "127")))
+  (is (= "369" (add-strs "127" "242")))
+  (is (= "50983579417168" (add-strs "50982345203045" "1234214123")))
+  (is (= "50983579417168" (add-strs "1234214123" "50982345203045"))))
+
 (deftest test-multiply-strs
   (is (= "0"   (multiply-strs "1"   "0")))
   (is (= "1"   (multiply-strs "1"   "1")))
